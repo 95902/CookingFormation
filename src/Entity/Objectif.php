@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\ObjectifRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=ObjectifRepository::class)
  */
-class Category
+class Objectif
 {
     /**
      * @ORM\Id
@@ -22,15 +22,10 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $enonce_objectif;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $description;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="categorie")
+     * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="objectif")
      */
     private $formations;
 
@@ -44,26 +39,14 @@ class Category
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getEnonceObjectif(): ?string
     {
-        return $this->nom;
+        return $this->enonce_objectif;
     }
 
-    public function setNom(string $nom): self
+    public function setEnonceObjectif(string $enonce_objectif): self
     {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
+        $this->enonce_objectif = $enonce_objectif;
 
         return $this;
     }
@@ -80,7 +63,7 @@ class Category
     {
         if (!$this->formations->contains($formation)) {
             $this->formations[] = $formation;
-            $formation->setCategorie($this);
+            $formation->addObjectif($this);
         }
 
         return $this;
@@ -89,10 +72,7 @@ class Category
     public function removeFormation(Formation $formation): self
     {
         if ($this->formations->removeElement($formation)) {
-            // set the owning side to null (unless already changed)
-            if ($formation->getCategorie() === $this) {
-                $formation->setCategorie(null);
-            }
+            $formation->removeObjectif($this);
         }
 
         return $this;
