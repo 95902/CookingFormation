@@ -9,10 +9,8 @@
     <title> {% block name %}
         Cooking formation
     {% endblock %}</title>
-
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -22,7 +20,6 @@
             -ms-user-select: none;
             user-select: none;
         }
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -44,8 +41,13 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-              
-              
+            <div class="navbar-item-custom">
+                {% if app.user %}
+                    <a href="{{ path('app_account') }}">Mon compte <small>({{ app.user.prenom }})</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
+                {% endif %}
+            </div>
             </ul>
             {# <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -56,6 +58,8 @@
 </header>
 
 <main role="main">
+ {% if block('carrousel') is defined %}
+    
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -104,14 +108,14 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
+ {% endif %}
 
     
          <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <div class="container marketing {% if block('carrousel') is  not defined %} mt-5 {% endif %}">
 
         {% block content %}{% endblock %}
 
