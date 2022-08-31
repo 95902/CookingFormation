@@ -35,9 +35,13 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Formation', 'fas fa-book-open', Formation::class);
-        yield MenuItem::linkToCrud('Objectif', 'fas fa-bullseye', Objectif::class);
-        yield MenuItem::linkToCrud('Détails formations', 'fas fa-x-ray', DetailsFormation::class);
-        yield MenuItem::linkToCrud('Prérequis', 'fas fa-business-time', Prerequis::class);
+        yield MenuItem::subMenu('Formation ','fas fa-book-open')->setSubItems([
+            MenuItem::linkToCrud('Formation', 'fas fa-book-open', Formation::class),
+            MenuItem::linkToCrud('Objectif', 'fas fa-bullseye', Objectif::class),
+            MenuItem::linkToCrud('Détails formations', 'fas fa-x-ray', DetailsFormation::class),
+            MenuItem::linkToCrud('Prérequis', 'fas fa-business-time', Prerequis::class),
+
+        ]);
+       
     }
 }
