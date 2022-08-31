@@ -33,6 +33,10 @@ class Objectif
     {
         $this->formations = new ArrayCollection();
     }
+    public function __toString()
+    {
+        return  $this->getEnonceObjectif();     
+    }
 
     public function getId(): ?int
     {

@@ -38,6 +38,10 @@ class DetailsFormation
     {
         $this->formations = new ArrayCollection();
     }
+    public function __toString()
+    {
+        return  $this->getTypeDetailsFormation().': '.$this->getEnoncerDetailsFormation();     
+    }
 
     public function getId(): ?int
     {
