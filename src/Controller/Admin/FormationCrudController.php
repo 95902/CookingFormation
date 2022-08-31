@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Formation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -18,12 +17,10 @@ class FormationCrudController extends AbstractCrudController
     {
         return Formation::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {
         return [
-       
             TextField::new('titre'),
             ImageField::new('image')
                 ->setBasePath('uploads/')
