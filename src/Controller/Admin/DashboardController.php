@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\ContenueFormation;
 use App\Entity\DetailsFormation;
 use App\Entity\Formation;
 use App\Entity\Objectif;
@@ -40,6 +41,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Objectif', 'fas fa-bullseye', Objectif::class),
             MenuItem::linkToCrud('Détails formations', 'fas fa-x-ray', DetailsFormation::class),
             MenuItem::linkToCrud('Prérequis', 'fas fa-business-time', Prerequis::class),
+            MenuItem::linkToCrud('Contenue', 'fas fa-book', ContenueFormation::class),
 
         ]);
        

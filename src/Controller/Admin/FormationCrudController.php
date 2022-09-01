@@ -29,8 +29,7 @@ class FormationCrudController extends AbstractCrudController
                 ->setRequired('false'),
             SlugField::new('slug')->setTargetFieldName('titre'),
             TextField::new('duree_formation'),
-            CollectionField ::new('contenue')
-            ->setEntryIsComplex(true),
+            AssociationField::new('Contenue_formation'),
             AssociationField::new('categorie'),
             AssociationField::new('prerequis'),
             AssociationField::new('objectif'),

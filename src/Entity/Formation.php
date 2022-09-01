@@ -70,6 +70,11 @@ class Formation
      */
     private $details_formation;
 
+    /**
+     * @ORM\OneToOne(targetEntity=ContenueFormation::class, cascade={"persist", "remove"})
+     */
+    private $Contenue_formation;
+
     public function __construct()
     {
         $this->prerequis = new ArrayCollection();
@@ -234,6 +239,18 @@ class Formation
     public function removeDetailsFormation(DetailsFormation $detailsFormation): self
     {
         $this->details_formation->removeElement($detailsFormation);
+
+        return $this;
+    }
+
+    public function getContenueFormation(): ?ContenueFormation
+    {
+        return $this->Contenue_formation;
+    }
+
+    public function setContenueFormation(?ContenueFormation $Contenue_formation): self
+    {
+        $this->Contenue_formation = $Contenue_formation;
 
         return $this;
     }
