@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Actualites;
 use App\Entity\Category;
 use App\Entity\ContenueFormation;
 use App\Entity\DetailsFormation;
@@ -50,6 +51,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Recette', 'fas fa-bread-slice', Recette::class),
             MenuItem::linkToCrud('Objectif', 'fas fa-clipboard-list', ProcedeRecette::class),
         ]);
+        yield MenuItem::linkToCrud('Actualités', 'far fa-newspaper', Actualites::class);
        
     }
 }
