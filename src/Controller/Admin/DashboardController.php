@@ -8,6 +8,8 @@ use App\Entity\DetailsFormation;
 use App\Entity\Formation;
 use App\Entity\Objectif;
 use App\Entity\Prerequis;
+use App\Entity\ProcedeRecette;
+use App\Entity\Recette;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -43,6 +45,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Prérequis', 'fas fa-business-time', Prerequis::class),
             MenuItem::linkToCrud('Contenue', 'fas fa-book', ContenueFormation::class),
 
+        ]);
+        yield MenuItem::subMenu('Recette ','fas fa-bread-slice')->setSubItems([
+            MenuItem::linkToCrud('Recette', 'fas fa-bread-slice', Recette::class),
+            MenuItem::linkToCrud('Objectif', 'fas fa-clipboard-list', ProcedeRecette::class),
         ]);
        
     }
