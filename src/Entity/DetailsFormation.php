@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\DetailsFormationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=DetailsFormationRepository::class)
  */
-class Category
+class DetailsFormation
 {
     /**
      * @ORM\Id
@@ -22,15 +22,15 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $type_details_formation;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $enoncer_details_formation;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="categorie")
+     * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="details_formation")
      */
     private $formations;
 
@@ -40,7 +40,7 @@ class Category
     }
     public function __toString()
     {
-        return  $this->getNom();     
+        return  $this->getTypeDetailsFormation().': '.$this->getEnoncerDetailsFormation();     
     }
 
     public function getId(): ?int
@@ -48,26 +48,26 @@ class Category
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getTypeDetailsFormation(): ?string
     {
-        return $this->nom;
+        return $this->type_details_formation;
     }
 
-    public function setNom(string $nom): self
+    public function setTypeDetailsFormation(string $type_details_formation): self
     {
-        $this->nom = $nom;
+        $this->type_details_formation = $type_details_formation;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getEnoncerDetailsFormation(): ?string
     {
-        return $this->description;
+        return $this->enoncer_details_formation;
     }
 
-    public function setDescription(string $description): self
+    public function setEnoncerDetailsFormation(string $enoncer_details_formation): self
     {
-        $this->description = $description;
+        $this->enoncer_details_formation = $enoncer_details_formation;
 
         return $this;
     }
@@ -84,7 +84,7 @@ class Category
     {
         if (!$this->formations->contains($formation)) {
             $this->formations[] = $formation;
-            $formation->setCategorie($this);
+            $formation->addDetailsFormation($this);
         }
 
         return $this;
@@ -93,10 +93,7 @@ class Category
     public function removeFormation(Formation $formation): self
     {
         if ($this->formations->removeElement($formation)) {
-            // set the owning side to null (unless already changed)
-            if ($formation->getCategorie() === $this) {
-                $formation->setCategorie(null);
-            }
+            $formation->removeDetailsFormation($this);
         }
 
         return $this;

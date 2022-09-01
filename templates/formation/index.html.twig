@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos formation Cooking Formation{% endblock %}
+
+{% block content %}
+
+<h1>Nos Formations</h1>
+    <div>
+    {# <nav aria-label="breadcrumb" class="bg-transparent border-0 shadow-none" style="margin-top: 0px;">
+    <ol class="breadcrumb bg-transparent border-0 shadow-none">
+        <li class="breadcrumb-item"><a href="index.php?uc=acceuil">Acceuil</a></li>
+        <li class="breadcrumb-item"><a href="index.php?uc=liste_formation">Formations</a></li>
+        <li class="breadcrumb-item"><a href="index.php?uc=formation_cuisine">Cuisine</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Les Jus et sauces </li>
+    </ol>
+    </nav> #}
+    </div>   
+
+{% for formation in formations %}
+    <pre>
+
+        {{ dump(formation.ContenueFormation.Jour1) }}
+
+    </pre>
+    
+{% endfor %}
+
+{% endblock %}
