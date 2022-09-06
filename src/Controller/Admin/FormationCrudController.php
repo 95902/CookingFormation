@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -22,6 +23,7 @@ class FormationCrudController extends AbstractCrudController
     {
         return [
             TextField::new('titre'),
+            TextareaField::new('description'),
             ImageField::new('image')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')

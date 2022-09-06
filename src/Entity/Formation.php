@@ -75,12 +75,21 @@ class Formation
      */
     private $Contenue_formation;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
     public function __construct()
     {
         $this->prerequis = new ArrayCollection();
         $this->objectif = new ArrayCollection();
         $this->details_formation = new ArrayCollection();
     }
+    // public function __toString()
+    // {
+    //     return  $this->getTitre();     
+    // }
 
     public function getId(): ?int
     {
@@ -251,6 +260,18 @@ class Formation
     public function setContenueFormation(?ContenueFormation $Contenue_formation): self
     {
         $this->Contenue_formation = $Contenue_formation;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

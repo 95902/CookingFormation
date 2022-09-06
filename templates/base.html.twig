@@ -27,6 +27,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
+     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/cookingformation.css') }}">
 </head>
@@ -39,8 +40,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('app_formations') }}">Nos formations  <span class="sr-only">(current)</span></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Nos formations
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for categorie in Menucategories %}
+                                <li>
+                                    <a class="dropdown-item" 
+                                    href="{{ path('app_formations', {'id': categorie.id}) }}">
+                                    {{categorie.nom}}
+                                    </a>
+                                </li>
+
+                        {% endfor %}
+                    </ul>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Nos recttes  <span class="sr-only">(current)</span></a>
@@ -140,6 +154,7 @@
         </p>
     </footer>
 </main>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 </body>

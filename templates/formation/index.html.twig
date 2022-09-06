@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1>Nos Formations</h1>
+<h3>Nos Formations</h3>
     <div>
     {# <nav aria-label="breadcrumb" class="bg-transparent border-0 shadow-none" style="margin-top: 0px;">
     <ol class="breadcrumb bg-transparent border-0 shadow-none">
@@ -16,13 +16,47 @@
     </nav> #}
     </div>   
 
+ <div class="row mt-5">
+		<div class="col">
+			<div class="text-center">
+				<h4 class=""> {{categories.nom}}</h1>
+			</div>
+		</div>
+	</div> 
+    <div class="row ">
 {% for formation in formations %}
+        
+{# {{ formation.categorie.nom }} #}
+    
+        <div class="col-md-4 mt-4">
+            <!-- Copy the content below until next comment -->
+            <div class="card card-custom bg-white border-white border-0">
+            <div class="card-custom-img" style="background-image: url(/uploads/{{formation.image}});"></div>
+            <div class="card-custom-avatar">
+                <img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
+            </div>
+            <div class="card-body" style="overflow-y: auto">
+                <h4 class="card-title">{{formation.titre}}</h4>
+                <p class="card-text">
+                    {{formation.description}}  
+                
+                
+                <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">card-decks</a> to align multiple cards nicely in a row.</p>
+            </div>
+            <div class="card-footer" style="background: inherit; border-color: inherit;">
+                <a href="#" class="btn btn-primary">Option</a>
+                <a href="#" class="btn btn-outline-primary">Other option</a>
+            </div>
+        </div>
+    </div>
+
     <pre>
 
-        {{ dump(formation.ContenueFormation.Jour1) }}
+        {{ dump(formation) }}
 
     </pre>
     
 {% endfor %}
+    </div>
 
 {% endblock %}
