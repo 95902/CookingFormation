@@ -167,4 +167,17 @@ class ContenueFormation
 
         return $this;
     }
+
+    public function getNbJourFormation()
+    {
+        $nb_jour = 0 ;
+
+        for ($i=1; $i < 8; $i++) { 
+            $verif_empty = $this->{"getJour".$i}();
+            if( !empty($verif_empty))
+            $nb_jour +=1;
+        }
+        return $nb_jour;
+
+    }
 }

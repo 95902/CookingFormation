@@ -16,14 +16,15 @@
     </nav> #}
     </div>   
 
- <div class="row mt-5">
+<div class="card p-3 border-0" style=" background: #F5F2EC">
+        <div class="row mt-3">
 		<div class="col">
 			<div class="text-center">
 				<h4 class=""> {{categories.nom}}</h1>
 			</div>
 		</div>
 	</div> 
-    <div class="row ">
+    <div class="row  ">
 {% for formation in formations %}
         
 {# {{ formation.categorie.nom }} #}
@@ -31,32 +32,45 @@
         <div class="col-md-4 mt-4">
             <!-- Copy the content below until next comment -->
             <div class="card card-custom bg-white border-white border-0">
-            <div class="card-custom-img" style="background-image: url(/uploads/{{formation.image}});"></div>
-            <div class="card-custom-avatar">
-                <img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-            </div>
-            <div class="card-body" style="overflow-y: auto">
-                <h4 class="card-title">{{formation.titre}}</h4>
-                <p class="card-text">
-                    {{formation.description}}  
-                
-                
-                <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">card-decks</a> to align multiple cards nicely in a row.</p>
-            </div>
-            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                <a href="#" class="btn btn-primary">Option</a>
-                <a href="#" class="btn btn-outline-primary">Other option</a>
+                <div class="card-custom-img" style="background-image: url(/uploads/{{formation.image}});"></div>
+                    <div class="card-body" style="overflow-y: auto">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4 class="card-title">{{formation.titre}}</h4>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                        {{formation.description}}  
+                    <div class="row">
+                            <div class="col-md-4">
+                            <a href="{{path('app_formation',{'slug':formation.slug})}}" class="btn hvr-grow-shadow   text-light rounded-0 " style="background-color: #174570;">En savoir   +</a>
+                            
+                            </div>
+                            <div class="col-md-5">
+                                Niveaux :
+                            {% for i in 1..formation.Difficultes %}
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            {% endfor %}
+                            </div>
+                            <div class="col-md-3 ">
+                                <i class="fa-solid fa-calendar-days"></i> 35h
+                            </div>
+                        </div>
+                    </div>
+                    
+                <div class="card-footer" style="background: inherit; border-color: inherit;">
             </div>
         </div>
     </div>
-
+{# 
     <pre>
 
         {{ dump(formation) }}
 
-    </pre>
+    </pre> #}
     
 {% endfor %}
     </div>
+</div>
 
 {% endblock %}

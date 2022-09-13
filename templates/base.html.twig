@@ -9,6 +9,8 @@
     <title> {% block name %}
         Cooking formation
     {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
@@ -30,8 +32,9 @@
      <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/cookingformation.css') }}">
+    <script src="https://kit.fontawesome.com/de4ed2dedc.js" crossorigin="anonymous"></script>
 </head>
-<body style="background:#F5F2EC">
+<body style="">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="{{ path('app_home') }}">Cooking Formation</a>
@@ -48,7 +51,7 @@
                         {% for categorie in Menucategories %}
                                 <li>
                                     <a class="dropdown-item" 
-                                    href="{{ path('app_formations', {'id': categorie.id}) }}">
+                                    href="{{ path('app_formations', {'slug': categorie.slug}) }}">
                                     {{categorie.nom}}
                                     </a>
                                 </li>

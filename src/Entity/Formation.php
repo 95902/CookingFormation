@@ -80,6 +80,11 @@ class Formation
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $difficultes;
+
     public function __construct()
     {
         $this->prerequis = new ArrayCollection();
@@ -252,7 +257,7 @@ class Formation
         return $this;
     }
 
-    public function getContenueFormation(): ?ContenueFormation
+    public function getContenue_Formation(): ?ContenueFormation
     {
         return $this->Contenue_formation;
     }
@@ -272,6 +277,18 @@ class Formation
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDifficultes(): ?int
+    {
+        return $this->difficultes;
+    }
+
+    public function setDifficultes(int $difficultes): self
+    {
+        $this->difficultes = $difficultes;
 
         return $this;
     }

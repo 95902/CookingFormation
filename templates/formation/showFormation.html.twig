@@ -1,0 +1,231 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos formation Cooking Formation{% endblock %}
+
+{% block content %}
+
+<h3>Nos Formations</h3>
+    <div>
+    {# <nav aria-label="breadcrumb" class="bg-transparent border-0 shadow-none" style="margin-top: 0px;">
+    <ol class="breadcrumb bg-transparent border-0 shadow-none">
+        <li class="breadcrumb-item"><a href="index.php?uc=acceuil">Acceuil</a></li>
+        <li class="breadcrumb-item"><a href="index.php?uc=liste_formation">Formations</a></li>
+        <li class="breadcrumb-item"><a href="index.php?uc=formation_cuisine">Cuisine</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Les Jus et sauces </li>
+    </ol>
+    </nav> #}
+    </div>  
+
+
+
+
+
+
+
+    <div class="card mt-3  border-0" style="max-width: 100% ; background: #F5F2EC">
+        <div class="row">
+        <div class="col-md-12 " >
+            <img src="/uploads/{{formation.image}}" class="img-fluid" alt="...">
+        </div>
+        </div>
+        <h2 class="text-center">Cuisine Bistro</h2>
+        <div class="row mt-2 p-5">
+            <div class="col-xl-8 ">
+                <h4 class="pl-4"><h3 class="img-fluid" > <img src="/uploads/chef.png" width="5%" alt="" >&emsp;Programme</h4>
+                <dl class="row mt-4">
+                    <dt class="col-sm-1"></dt>
+                    <dd class="col-sm-10">
+                        <dl class="row">
+                            <dt class="col-sm-5">Objectif : </dt>
+                            <dl class="row mt-2">
+                            <dt class="col-sm-1"></dt>
+                            <dd class="col-sm-10">
+                                {% for objectif in formation.objectif %}
+                                    <li class="">{{objectif}}</li>
+                                {% endfor %}
+                            </dd>
+                        </dl>
+                    </dd>
+                </dl>
+                <dl class="row mt-2">
+                    <dt class="col-sm-1"></dt>
+                    <dd class="col-sm-9">
+                        <dl class="row">
+                            <dt class="col-sm-3 ">Contenu </dt>
+                            <dd class="col-sm-10 mt-3">
+                                <div class="accordion" id="accordionExample">
+                                    {% for i in 1..nbj_contenue%}
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="{{i}}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="{{ '#collapseOne' ~ i}}" aria-expanded="true" aria-controls="{{ 'collapseOne' ~ i}}">
+                                                jour  {{ i }}
+                                            </button>
+                                            </h2>
+                                            <div id="{{ 'collapseOne' ~ i}}" class="accordion-collapse collapse " aria-labelledby="{{i}}" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul class="">
+                                                        {% for Contenue in formation.Contenue_formation.jour1 %}
+                                                            <li> {{ Contenue}}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %} 
+                                </div> 
+                            </dd>
+                        </dl>
+                    </dd>
+                </dl> 
+
+
+
+
+          </div> 
+          <div class="col-xl-1 d-none  d-xl-block">
+            <img src=".image/détail_formation/Tracé 584.png" alt="" >
+          </div>
+          <div class="col-xl-3">
+            <h4>INFORMATIONS PRATIQUES</h4>
+            <div class="row mt-4">
+              <button type="button" class="  btn hvr-grow-shadow-rectangle  text-light rounded-1  text-center " style="background-color: #174570;" >DURÉE <br>
+                35h </button> 
+            </div>
+            <div class="row  mt-4">
+              <button type="button" class="  btn hvr-grow-shadow-rectangle  text-light rounded-1 just " style="background-color: #1F455F;">PRÉREQUIS<br>
+              expérience en cuisine <br>
+              CV demander</button> 
+            </div>
+            <div class="row  mt-4">
+              <a href="index.php?uc=formulaire"  class="  btn hvr-grow-shadow-rectangle  text-light rounded-1 just  " style="background-color: #000032;">En savoir   +</a> 
+            
+            </div>
+          </div>
+        </div>
+        
+        <dl class="row mt-2">
+          
+          <dt class="col-sm-1"></dt>
+          <dd class="col-sm-6">
+            <h4 class="mb-5">Détails formation </h4>
+            <dl class="row">
+              
+              <dt class="col-sm-2">Prérequis:</dt>
+              <dd class="col-sm-10">
+                <p>Avoir une expérience en cuisine. Débutant.  C.V demandé. </p>
+              </dd>
+            </dl>
+            <dl class="row">
+              <dt class="col-sm-2">Public visé: </dt>
+              <dd class="col-sm-10">
+                <p>Du commis au chef de cuisine, nous formons des personnels de cuisine en activité qui souhaitent se perfectionner.</p>
+              </dd>
+            </dl>
+            <dl class="row">
+              <dt class="col-sm-2">Durée</dt>
+              <dd class="col-sm-10">
+                <p>35h soit 5 jours sur 7 h de formation par jour.  La formation peut avoir lieu sur 5 jours consécutifs ou sur 5 jours étalés sur plusieurs semaines.
+                </p>
+              </dd>
+            </dl>
+          </dd>
+          <dd class="col-sm-5">
+            <img src="./image/détail_formation/Sans titre (19).png" class="rounded-sm" width="90%" alt="">
+          </dd>
+        </dl>
+        <div class="row  mt-4">
+          <div class="col-xl-1">
+            
+          </div> 
+          <div class="col-xl-8  ">
+          
+            <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example rounded-sm" tabindex="0"     style="height:300px;overflow-y: scroll;padding:9px; border: 1px solid #174570;">
+              
+              <h4 id="list-item-1">Méthode et moyens pédagogiques :</h4>
+              <p style="line-height: 1.8;">La formation à lieu dans les cuisines du client, au sein de son entreprise avec son matériel ce qui permet pour lui de ne pas avoir à s’adapter à une nouvelle cuisine. 
+                Les stagiaires participent activement à la réalisation des différentes recettes avec l’aide de l’animateur. La formation est basée sur la pratique des techniques.
+                Pour une bonne prise en main de la formation, le support pédagogique ainsi que les fiches recettes seront remis au candidat par mail à l’issue de la formation. 
+                </p>
+              <h4 id="list-item-2" class="mt-5">Modalités d’évaluation des connaissances et de suivi :</h4>
+              <p style="line-height: 1.8;">Évaluations pratiques en situation d’apprentissage.
+                Auto-évaluation des acquis en fin de formation. 
+                Fiche d’évaluation satisfaction à chaud à l’issue de la formation. 
+                Feuille d’émargement co-signée par demi-journée.
+                Attestation de présence remise en fin de formation.
+                </p>
+              <h4 id="list-item-3"class="mt-5">Encadrement de l’action de formation : </h4>
+              <p style="line-height: 1.8;">Bruno BRAGANCE ayant un parcours professionnel dans les restaurants et traiteurs réputés de Paris comme Potelle et Chabot, Lenôtre, Laduré , Le Crillon.  Fort de cette expérience, il veut transmettre et partager son savoir faire.
+              </p>
+              <h4 id="list-item-4"class="mt-5">Modalités d’inscription et délai d’accès à la formation: </h4>
+              <p style="line-height: 1.8;">Cette formation est en présentiel.
+                Afin de vous inscrire à notre formation, merci de contacter jusqu’à 1 mois avant le début de la formation : Bragance Bruno par téléphone au 06 13 03 23 11 ou par mail à cookingformation.60@gmail.com pour obtenir votre bulletin d’inscription.
+                Une fois reçu, complétez-le et envoyez-le par courriel à cookingformation.60@gmail.com
+                Un questionnaire, un CV ou toute autre pièce peuvent vous être demandés afin que nous puissions nous positionner sur votre niveau à l’entrée de la formation. 
+                Une fois votre inscription validée, nous vous adresserons une convention de formation et une convocation vous sera envoyée par mail 10 jours avant le début de la formation.
+                En cas de subrogation de paiement, un accord du financeur doit nous être parvenu avec le début de la formation
+                </p>
+                <h4 id="list-item-5"class="mt-5">Accessibilité pour les personnes en situation de handicap :
+                </h4>
+                <p style="line-height: 1.8;">La loi du 5 septembre 2018 pour la « liberté de choisir son avenir professionnel » a pour objectif de faciliter l’accès à l’emploi des personnes en situation de handicap.
+                Notre organisme tente de donner à tous les mêmes chances d’accéder ou de maintenir l’emploi. 
+                Nous pouvons adapter certaines de nos modalités de formation, pour cela, nous étudierons ensemble vos besoins. 
+                Pour toutes questions, merci de contacter :
+                BRAGANCE BRUNO au 06 13 03 23 11 ou à cookingformation.60@gmail
+                
+                </p>
+            </div>
+           </div> 
+           <div class="col-xl-1">
+           </div> 
+        </div>
+        <div class="row mt-4 justify-content-center ">
+          <div class="col-xl-7 mt-3  mb-3 ">
+             <a href="index.php?uc=formulaire"  class="  btn hvr-grow-shadow  btn-lg btn-block text-light rounded-sm mt-3 just " style="background-color: #174570;">En savoir   +</a>    
+          </div>     
+        </div>
+        <div class="row justify-content-center  pt-4 ">
+            <img src="../image/demi_cerlcle.png" width="15%"  alt="...">
+          </div>
+        </div>  
+      </div>
+     
+  </div>
+
+    <div class="col-md-12 mt-4">
+            <!-- Copy the content below until next comment -->
+            
+            <div class="card card-custom bg-white border-white border-0">
+                <div class="card-custom-img" style="background-image: url(/uploads/{{formation.image}});"></div>
+                    <div class="card-body" style="overflow-y: auto">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4 class="card-title">{{formation.titre}}</h4>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                        {{formation.description}}  
+                    <div class="row">
+                            <div class="col-md-4">
+                            <a href="{{path('app_formation',{'slug':formation.slug})}}" class="btn hvr-grow-shadow   text-light rounded-0 " style="background-color: #174570;">En savoir   +</a>
+                            
+                            </div>
+                            <div class="col-md-5">
+                                Niveaux :
+                            {% for i in 1..formation.Difficultes %}
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            {% endfor %}
+                            </div>
+                            <div class="col-md-3 ">
+                                <i class="fa-solid fa-calendar-days"></i> 35h
+                            </div>
+                        </div>
+                    </div>
+                    
+                <div class="card-footer" style="background: inherit; border-color: inherit;">
+            </div>
+        </div>
+
+
+
+
+{% endblock %}
